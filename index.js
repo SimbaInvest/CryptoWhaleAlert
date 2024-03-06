@@ -36,7 +36,7 @@ client.on('ready', () => {
 
             console.log(body);
 
-            if(body['transactions'][0]['id'] === undefined){
+            if(body['transactions'] === undefined){
                 return
             }
 
@@ -53,7 +53,6 @@ client.on('ready', () => {
             if (blockchain !== "ethereum" && blockchain !== "bitcoin" || blockchain !== "tron") {
                 return;
             }
-
 
             if (currentId === id) {
                 return;
