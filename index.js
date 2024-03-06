@@ -25,7 +25,7 @@ client.on('ready', () => {
     const channel = client.channels.cache.get(process.env.CHANNEL_ID)
 
     function getTransactions() {
-        request(`https://api.whale-alert.io/v1/transactions?api_key=4dWraprhZ6wONpbymUZsNcucs6KntcDY&min_value=500000&start=${Math.floor(Date.now() / 1000 - 360)}&limit=1`, function (error, response, body) {
+        request(`https://api.whale-alert.io/v1/transactions?api_key=4dWraprhZ6wONpbymUZsNcucs6KntcDY&min_value=10000000&start=${Math.floor(Date.now() / 1000 - 360)}&limit=1`, function (error, response, body) {
             if (error) {
                 console.log(error)
             }
@@ -54,11 +54,7 @@ client.on('ready', () => {
                 toAddress = capitalizeFirstLetter(toOwner)
             }
         
-            if(amount_usd < 10000000){
-                return
-            } else {
-                channel.send("🚨 " + numberWithCommas(Math.round(amount)) + " " + symbol.toUpperCase() + " (" + numberWithCommas(Math.round(amount_usd)) + " USD) transferred from " + fromAddress + " to " + toAddress)
-            }
+            channel.send("🚨 " + numberWithCommas(Math.round(amount)) + " " + symbol.toUpperCase() + " (" + numberWithCommas(Math.round(amount_usd)) + " USD) transferred from " + fromAddress + " to " + toAddress)
         });
     }
 
