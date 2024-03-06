@@ -33,16 +33,18 @@ client.on('ready', () => {
             }
     
             body = JSON.parse(body);
+            
+            console.log(body);
 
             var fromAddress = null;
             var toAddress = null;
             var id = body['transactions'][0]['id'];
-            var amount = body['transactions'][0]['amount']
-            var amount_usd = body['transactions'][0]['amount_usd']
-            var blockchain = body['transactions'][0]['blockchain']
-            var symbol = body['transactions'][0]['symbol']
-            var fromOwner = body['transactions'][0]['from']['owner']
-            var toOwner = body['transactions'][0]['to']['owner']
+            var amount = body['transactions'][0]['amount'];
+            var amount_usd = body['transactions'][0]['amount_usd'];
+            var blockchain = body['transactions'][0]['blockchain'];
+            var symbol = body['transactions'][0]['symbol'];
+            var fromOwner = body['transactions'][0]['from']['owner'];
+            var toOwner = body['transactions'][0]['to']['owner'];
 
             if (blockchain !== "ethereum" && blockchain !== "bitcoin" || blockchain !== "tron") {
                 return;
