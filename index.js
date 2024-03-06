@@ -37,7 +37,7 @@ client.on('ready', () => {
             console.log(body);
 
             if(body['transactions'] === undefined){
-                return
+                return;
             }
 
             var fromAddress = null;
@@ -50,9 +50,13 @@ client.on('ready', () => {
             var fromOwner = body['transactions'][0]['from']['owner'];
             var toOwner = body['transactions'][0]['to']['owner'];
 
-            if (blockchain !== "ethereum" && blockchain !== "bitcoin" || blockchain !== "tron") {
-                return;
-            }
+            if (blockchain !== "ethereum") {
+                if (blockchain !== "bitcoin") {
+                  if (blockchain !== "tron") {
+                    return;
+                  }
+                }
+              }
 
             if (currentId === id) {
                 return;
