@@ -33,8 +33,12 @@ client.on('ready', () => {
             }
     
             body = JSON.parse(body);
-            
+
             console.log(body);
+
+            if(body['transactions'][0]['id'] === undefined){
+                return
+            }
 
             var fromAddress = null;
             var toAddress = null;
@@ -49,6 +53,7 @@ client.on('ready', () => {
             if (blockchain !== "ethereum" && blockchain !== "bitcoin" || blockchain !== "tron") {
                 return;
             }
+
 
             if (currentId === id) {
                 return;
