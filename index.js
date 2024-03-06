@@ -68,11 +68,7 @@ client.on('ready', () => {
                 toAddress = capitalizeFirstLetter(toOwner);
             }
         
-            if(amount_usd < 10000000){
-                return
-            } else {
-                channel.send("🚨 " + numberWithCommas(Math.round(amount)) + " " + symbol.toUpperCase() + " (" + numberWithCommas(Math.round(amount_usd)) + " USD) transferred from " + fromAddress + " to " + toAddress);
-            }
+            channel.send("🚨 " + numberWithCommas(Math.round(amount)) + " " + symbol.toUpperCase() + " (" + numberWithCommas(Math.round(amount_usd)) + " USD) transferred from " + fromAddress + " to " + toAddress);
         });
     }
 
