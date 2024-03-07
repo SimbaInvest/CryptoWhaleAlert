@@ -15,6 +15,10 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 
@@ -74,7 +78,7 @@ client.on('ready', () => {
                 toAddress = capitalizeFirstLetter(toOwner);
             }
         
-            channel.send("🚨 " + amount.toLocaleString() + " " + symbol.toUpperCase() + " (" + amount_usd.toLocaleString() + " USD) transferred from " + fromAddress + " to " + toAddress);
+            channel.send("🚨 " + numberWithCommas(Math.round(amount)) + " " + symbol.toUpperCase() + " (" + numberWithCommas(Math.round(amount_usd)) + " USD) transferred from " + fromAddress + " to " + toAddress);
         });
     }
 
